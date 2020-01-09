@@ -11,7 +11,6 @@
         <result property="description" column="description" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="VARCHAR"/>
     </resultMap>
-
     <select id="queryBannersByStatus" resultType="com.baizhi.ljy.entity.User" parameterType="String">
         select * from banner where status = #{status}
     </select>

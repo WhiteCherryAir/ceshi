@@ -1,5 +1,6 @@
 package com.baizhi.ljy.service;
 
+import com.baizhi.ljy.annotation.LogAnnotation;
 import com.baizhi.ljy.dao.BannerDao;
 import com.baizhi.ljy.entity.Banner;
 import org.apache.ibatis.session.RowBounds;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -27,6 +30,8 @@ public class BannerServiceImpl implements BannerService {
     //分页
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    //@AddorSelectCache
+    @LogAnnotation(value = "查询轮播图信息")
     public Map queryAllByLimit(Integer page, Integer rows) {
         //jqgrid rows数据 page当前页 records总条数 total总页数
         Map map = new HashMap();
